@@ -1,0 +1,43 @@
+Testes unitários do Caminho Livre - executados em 16/11/2026 22:20:43
+Comando: python tests/test_unitarios.py
+
+test_detalhe_da_auditoria_e_sanitizado (__main__.TestAuditoriaEncadeada.test_detalhe_da_auditoria_e_sanitizado) ... ok
+test_detecta_adulteracao (__main__.TestAuditoriaEncadeada.test_detecta_adulteracao) ... ok
+test_detecta_remocao (__main__.TestAuditoriaEncadeada.test_detecta_remocao) ... ok
+test_fora_da_janela_de_30_dias (__main__.TestDuplicidade.test_fora_da_janela_de_30_dias) ... ok
+test_hash_vazio_nunca_conta_como_mesma_foto (__main__.TestDuplicidade.test_hash_vazio_nunca_conta_como_mesma_foto) ... ok
+test_mesma_foto (__main__.TestDuplicidade.test_mesma_foto) ... ok
+test_mesma_rua_e_referencia_escritas_de_outro_jeito (__main__.TestDuplicidade.test_mesma_rua_e_referencia_escritas_de_outro_jeito) ... ok
+test_outra_categoria_nao_e_duplicata (__main__.TestDuplicidade.test_outra_categoria_nao_e_duplicata) ... ok
+test_outra_rua_nao_e_duplicata (__main__.TestDuplicidade.test_outra_rua_nao_e_duplicata) ... ok
+test_codigo_curto_ou_vazio_nao_apaga_nada (__main__.TestLGPD.test_codigo_curto_ou_vazio_nao_apaga_nada) ... ok
+test_foto_compartilhada_so_some_quando_ninguem_mais_usa (__main__.TestLGPD.test_foto_compartilhada_so_some_quando_ninguem_mais_usa) ... 2026-11-16 22:20:43,595 | INFO | Ocorrência 1 apagada a pedido do titular
+
+ok
+test_retencao_apaga_so_o_que_passou_do_prazo (__main__.TestLGPD.test_retencao_apaga_so_o_que_passou_do_prazo) ... 2026-11-16 22:20:43,600 | INFO | Retenção (90 dias): ocorrências=1 fotos=1 arquivos=0
+ok
+test_titular_pode_apagar_o_proprio_relato (__main__.TestLGPD.test_titular_pode_apagar_o_proprio_relato) ... 2026-11-16 22:20:43,602 | INFO | Ocorrência 1 apagada a pedido do titular
+ok
+test_jpeg_truncado_gera_erro (__main__.TestMetadadosDasFotos.test_jpeg_truncado_gera_erro) ... ok
+test_mantem_o_conteudo_da_imagem (__main__.TestMetadadosDasFotos.test_mantem_o_conteudo_da_imagem) ... ok
+test_rejeita_arquivo_que_nao_e_imagem (__main__.TestMetadadosDasFotos.test_rejeita_arquivo_que_nao_e_imagem) ... ok
+test_remove_gps_de_jpeg_png_e_webp (__main__.TestMetadadosDasFotos.test_remove_gps_de_jpeg_png_e_webp) ... ok
+test_fonte_externa_nao_exige_foto (__main__.TestRegrasDeNegocio.test_fonte_externa_nao_exige_foto) ... ok
+test_foto_inexistente_e_rejeitada (__main__.TestRegrasDeNegocio.test_foto_inexistente_e_rejeitada) ... ok
+test_normalizar_acentos_e_abreviacoes (__main__.TestRegrasDeNegocio.test_normalizar_acentos_e_abreviacoes) ... ok
+test_prioridade (__main__.TestRegrasDeNegocio.test_prioridade) ... ok
+test_protocolo (__main__.TestRegrasDeNegocio.test_protocolo) ... ok
+test_similaridade_ruas_equivalentes (__main__.TestRegrasDeNegocio.test_similaridade_ruas_equivalentes) ... ok
+test_validacao (__main__.TestRegrasDeNegocio.test_validacao) ... ok
+test_descrever_erro_nao_vaza_dados (__main__.TestSanitizacao.test_descrever_erro_nao_vaza_dados) ... ok
+test_preserva_rotas_da_api_e_fracoes (__main__.TestSanitizacao.test_preserva_rotas_da_api_e_fracoes) ... ok
+test_remove_caminho_de_arquivo (__main__.TestSanitizacao.test_remove_caminho_de_arquivo) ... ok
+test_remove_dados_pessoais (__main__.TestSanitizacao.test_remove_dados_pessoais) ... ok
+test_apenas_uma_execucao_por_vez (__main__.TestTrava.test_apenas_uma_execucao_por_vez) ... ok
+test_trava_abandonada_e_removida (__main__.TestTrava.test_trava_abandonada_e_removida) ... 2026-11-16 22:20:43,605 | WARNING | Trava antiga removida
+ok
+
+----------------------------------------------------------------------
+Ran 30 tests in 0.040s
+
+OK

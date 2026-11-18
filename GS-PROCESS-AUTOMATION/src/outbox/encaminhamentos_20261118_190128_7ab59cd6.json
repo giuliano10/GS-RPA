@@ -1,0 +1,68 @@
+{
+  "versao": "1.1",
+  "execucao": "7ab59cd6",
+  "gerado_em": "2026-11-18T19:01:28",
+  "total": 3,
+  "ocorrencias": [
+    {
+      "protocolo": "CL-2026-329EEC16",
+      "categoria": "buraco",
+      "prioridade": {
+        "nivel": "alta",
+        "pontos": 7
+      },
+      "local": {
+        "rua": "Rua Manoel Coelho",
+        "referencia": "Em frente à padaria Pão Doce"
+      },
+      "descricao": "Buraco grande informado pela subprefeitura",
+      "foto": {
+        "arquivo": null,
+        "hash": null
+      },
+      "reincidencias": 2,
+      "criado_em": "2026-11-18T19:01:28.337095",
+      "origem": "prefeitura"
+    },
+    {
+      "protocolo": "CL-2026-164C36E6",
+      "categoria": "desnivel",
+      "prioridade": {
+        "nivel": "media",
+        "pontos": 4
+      },
+      "local": {
+        "rua": "Avenida Goiás",
+        "referencia": "Perto do ponto de ônibus"
+      },
+      "descricao": "Desnível na calçada",
+      "foto": {
+        "arquivo": null,
+        "hash": null
+      },
+      "reincidencias": 0,
+      "criado_em": "2026-11-18T19:01:28.337601",
+      "origem": "prefeitura"
+    },
+    {
+      "protocolo": "CL-2026-FE8CF3C6",
+      "categoria": "obra",
+      "prioridade": {
+        "nivel": "media",
+        "pontos": 4
+      },
+      "local": {
+        "rua": "Rua Santo Antônio",
+        "referencia": "Esquina com a farmácia"
+      },
+      "descricao": "Obra ocupando a calçada",
+      "foto": {
+        "arquivo": null,
+        "hash": null
+      },
+      "reincidencias": 0,
+      "criado_em": "2026-11-18T19:01:28.337616",
+      "origem": "prefeitura"
+    }
+  ]
+}

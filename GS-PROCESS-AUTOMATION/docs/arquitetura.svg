@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 580" width="760" height="580" font-family="Arial, Helvetica, sans-serif" role="img" aria-label="Arquitetura do Caminho Livre">
+<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#555" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="760" height="580" fill="#ffffff"/>
+<rect x="40" y="30" width="200" height="50" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+<text x="140.0" y="49.0" text-anchor="middle" font-size="14" font-weight="bold" fill="#2C2C2A">Cidadão</text>
+<text x="140.0" y="69.0" text-anchor="middle" font-size="12" fill="#2C2C2A">navegador, sem login</text>
+<rect x="280" y="30" width="200" height="50" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+<text x="380.0" y="49.0" text-anchor="middle" font-size="14" font-weight="bold" fill="#2C2C2A">Órgãos públicos</text>
+<text x="380.0" y="69.0" text-anchor="middle" font-size="12" fill="#2C2C2A">painel, com chave</text>
+<rect x="520" y="30" width="200" height="50" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+<text x="620.0" y="49.0" text-anchor="middle" font-size="14" font-weight="bold" fill="#2C2C2A">Outro componente</text>
+<text x="620.0" y="69.0" text-anchor="middle" font-size="12" fill="#2C2C2A">CitizenTech, API v1</text>
+<path d="M140 80 L140 140" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="148" y="114" text-anchor="start" font-size="12" fill="#555">foto, rua, referência</text>
+<path d="M380 80 L380 140" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="388" y="114" text-anchor="start" font-size="12" fill="#555">login com chave</text>
+<path d="M620 80 L620 140" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="628" y="114" text-anchor="start" font-size="12" fill="#555">X-API-Key</text>
+<rect x="130" y="140" width="500" height="60" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+<text x="380.0" y="164.0" text-anchor="middle" font-size="14" font-weight="bold" fill="#26215C">Servidor HTTP + API v1</text>
+<text x="380.0" y="184.0" text-anchor="middle" font-size="12" fill="#26215C">Chave de API, limite por IP, fotos sem EXIF, aviso de privacidade</text>
+<path d="M140 200 L140 260" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="148" y="234" text-anchor="start" font-size="12" fill="#555">grava o relato</text>
+<path d="M380 200 L380 260" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="388" y="234" text-anchor="start" font-size="12" fill="#555">foto sem EXIF</text>
+<rect x="40" y="260" width="200" height="50" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+<text x="140.0" y="279.0" text-anchor="middle" font-size="14" font-weight="bold" fill="#04342C">Banco SQLite</text>
+<text x="140.0" y="299.0" text-anchor="middle" font-size="12" fill="#04342C">relatos, alertas e auditoria</text>
+<rect x="280" y="260" width="200" height="50" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+<text x="380.0" y="279.0" text-anchor="middle" font-size="14" font-weight="bold" fill="#04342C">uploads/</text>
+<text x="380.0" y="299.0" text-anchor="middle" font-size="12" fill="#04342C">fotos dos relatos</text>
+<rect x="520" y="260" width="200" height="50" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+<text x="620.0" y="279.0" text-anchor="middle" font-size="14" font-weight="bold" fill="#2C2C2A">entrada/</text>
+<text x="620.0" y="299.0" text-anchor="middle" font-size="12" fill="#2C2C2A">CSV de outras fontes</text>
+<path d="M140 380 L140 310" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#a)" marker-start="url(#a)"/>
+<text x="148" y="350" text-anchor="start" font-size="12" fill="#555">lê e atualiza</text>
+<path d="M620 310 L620 380" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="628" y="350" text-anchor="start" font-size="12" fill="#555">importa e move</text>
+<rect x="130" y="380" width="500" height="60" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+<text x="380.0" y="404.0" text-anchor="middle" font-size="14" font-weight="bold" fill="#26215C">Robô RPA (agendado: 1 ciclo por minuto)</text>
+<text x="380.0" y="424.0" text-anchor="middle" font-size="12" fill="#26215C">Importa, valida, deduplica, prioriza, encaminha, alerta e audita</text>
+<path d="M140 440 L140 480" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="148" y="464" text-anchor="start" font-size="12" fill="#555">JSON + CSV</text>
+<path d="M380 440 L380 480" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="388" y="464" text-anchor="start" font-size="12" fill="#555">alertas</text>
+<path d="M620 440 L620 480" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="628" y="464" text-anchor="start" font-size="12" fill="#555">logs + auditoria</text>
+<rect x="40" y="480" width="200" height="50" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+<text x="140.0" y="499.0" text-anchor="middle" font-size="14" font-weight="bold" fill="#2C2C2A">outbox/</text>
+<text x="140.0" y="519.0" text-anchor="middle" font-size="12" fill="#2C2C2A">entrega ao próximo componente</text>
+<rect x="280" y="480" width="200" height="50" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+<text x="380.0" y="499.0" text-anchor="middle" font-size="14" font-weight="bold" fill="#412402">alertas/</text>
+<text x="380.0" y="519.0" text-anchor="middle" font-size="12" fill="#412402">prioridade alta e falhas</text>
+<rect x="520" y="480" width="200" height="50" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+<text x="620.0" y="499.0" text-anchor="middle" font-size="14" font-weight="bold" fill="#2C2C2A">logs/ e auditoria</text>
+<text x="620.0" y="519.0" text-anchor="middle" font-size="12" fill="#2C2C2A">sem dados do cidadão</text>
+<rect x="60" y="552" width="12" height="12" rx="2" fill="#F1EFE8" stroke="#5F5E5A"/>
+<text x="80" y="562" text-anchor="start" font-size="12" fill="#555">atores e arquivos</text>
+<rect x="212.2" y="552" width="12" height="12" rx="2" fill="#EEEDFE" stroke="#534AB7"/>
+<text x="232.2" y="562" text-anchor="start" font-size="12" fill="#555">processos</text>
+<rect x="311.6" y="552" width="12" height="12" rx="2" fill="#E1F5EE" stroke="#0F6E56"/>
+<text x="331.6" y="562" text-anchor="start" font-size="12" fill="#555">armazenamento</text>
+<rect x="437.40000000000003" y="552" width="12" height="12" rx="2" fill="#FAEEDA" stroke="#854F0B"/>
+<text x="457.40000000000003" y="562" text-anchor="start" font-size="12" fill="#555">alertas</text>
+</svg>

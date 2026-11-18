@@ -1,0 +1,10 @@
+{
+  "auditoria_integra": true,
+  "auditoria_registros": 26,
+  "encaminhadas_no_banco": 4,
+  "encaminhadas_nos_arquivos": 4,
+  "sem_arquivo_de_saida": [],
+  "consistente": true,
+  "encaminhadas_na_api": 4,
+  "divergencia_banco_x_api": []
+}

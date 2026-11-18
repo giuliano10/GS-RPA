@@ -1,0 +1,241 @@
+{
+  "versao": "1.1",
+  "total": 26,
+  "proximo_id": 26,
+  "itens": [
+    {
+      "id": 1,
+      "ts": "2026-11-16T22:20:43",
+      "execucao": "5ac05b79",
+      "ocorrencia_id": 1,
+      "evento": "VALIDADA",
+      "detalhe": "prioridade=5 nivel=media",
+      "hash": "dfa7c3e996d22e0ad31d84ea631adfea200c5240dab2ad669b3360777edeef4f"
+    },
+    {
+      "id": 2,
+      "ts": "2026-11-16T22:20:43",
+      "execucao": "5ac05b79",
+      "ocorrencia_id": 2,
+      "evento": "DUPLICADA",
+      "detalhe": "original=1 protocolo=CL-2026-1EABB3F0",
+      "hash": "ce9337197cb7ffafd5970cf031b67ee97e83584b94aaad95d0a816e2a01016db"
+    },
+    {
+      "id": 3,
+      "ts": "2026-11-16T22:20:43",
+      "execucao": "5ac05b79",
+      "ocorrencia_id": 3,
+      "evento": "DUPLICADA",
+      "detalhe": "original=1 protocolo=CL-2026-1EABB3F0",
+      "hash": "66e324d22d370c5a68594a7e8fcd2a12415e3bd19f749dcf531c1feb2cf99926"
+    },
+    {
+      "id": 4,
+      "ts": "2026-11-16T22:20:43",
+      "execucao": "5ac05b79",
+      "ocorrencia_id": 4,
+      "evento": "VALIDADA",
+      "detalhe": "prioridade=4 nivel=media",
+      "hash": "249c19d0895320aa477c590b706b178e2172cabb8a3f4e14a796efd201b32fe6"
+    },
+    {
+      "id": 5,
+      "ts": "2026-11-16T22:20:43",
+      "execucao": "5ac05b79",
+      "ocorrencia_id": 5,
+      "evento": "VALIDADA",
+      "detalhe": "prioridade=4 nivel=media",
+      "hash": "78d880a67002dc795913812686d82e9f697df67904d0d64b7f8f5188f0925186"
+    },
+    {
+      "id": 6,
+      "ts": "2026-11-16T22:20:43",
+      "execucao": "5ac05b79",
+      "ocorrencia_id": 6,
+      "evento": "REJEITADA",
+      "detalhe": "categoria inválida: xyz",
+      "hash": "e0d175b5a256751890367c8157e844b9e85d6a2243debcf49b128ff83dce9a4e"
+    },
+    {
+      "id": 7,
+      "ts": "2026-11-16T22:20:43",
+      "execucao": "5ac05b79",
+      "ocorrencia_id": 7,
+      "evento": "REJEITADA",
+      "detalhe": "campos obrigatórios ausentes: rua",
+      "hash": "3e55d370f9ce4febe7573e0061dfe839f20f116de78f7c302e746f49e24fbf62"
+    },
+    {
+      "id": 8,
+      "ts": "2026-11-16T22:20:43",
+      "execucao": "5ac05b79",
+      "ocorrencia_id": 1,
+      "evento": "ENCAMINHADA",
+      "detalhe": "CL-2026-1EABB3F0",
+      "hash": "b3d9e3dac5150facbe1658a9f4b4c4a7adcdad07ec8e0e6364f004cf642a432a"
+    },
+    {
+      "id": 9,
+      "ts": "2026-11-16T22:20:43",
+      "execucao": "5ac05b79",
+      "ocorrencia_id": 4,
+      "evento": "ENCAMINHADA",
+      "detalhe": "CL-2026-CB76512C",
+      "hash": "be6bb970e75b89acbd2da0b81fd68cc89790015b85ca0d72ceffc34b52e324ef"
+    },
+    {
+      "id": 10,
+      "ts": "2026-11-16T22:20:43",
+      "execucao": "5ac05b79",
+      "ocorrencia_id": 5,
+      "evento": "ENCAMINHADA",
+      "detalhe": "CL-2026-6EB2BC9D",
+      "hash": "f6cfd6eda0d36ad1621a415590af02dd10462df66b5a517e40cd32fced38f2d6"
+    },
+    {
+      "id": 11,
+      "ts": "2026-11-16T22:20:43",
+      "execucao": "5ac05b79",
+      "ocorrencia_id": null,
+      "evento": "RESUMO",
+      "detalhe": "{'processados': 7, 'sucessos': 7, 'falhas': 0}",
+      "hash": "3469a0c7fb2b27d208ff2b8dddc20d5ac0efe8da5ce69eb3570b2eb5492af56e"
+    },
+    {
+      "id": 12,
+      "ts": "2026-11-16T22:20:43",
+      "execucao": "retencao",
+      "ocorrencia_id": null,
+      "evento": "RETENCAO",
+      "detalhe": "dias=90 ocorrencias=0 fotos=0 arquivos=0",
+      "hash": "c36e24854ffaba252b94db87e23026c01068723269d7090f7f039f33f6fbc141"
+    },
+    {
+      "id": 13,
+      "ts": "2026-11-16T22:20:46",
+      "execucao": "c82ed9a9",
+      "ocorrencia_id": 8,
+      "evento": "DUPLICADA",
+      "detalhe": "original=1 protocolo=CL-2026-1EABB3F0",
+      "hash": "b2333fca9d772d36333864cdecaf3cf15be74e20944d0605998f044a5f29d17d"
+    },
+    {
+      "id": 14,
+      "ts": "2026-11-16T22:20:46",
+      "execucao": "c82ed9a9",
+      "ocorrencia_id": 9,
+      "evento": "VALIDADA",
+      "detalhe": "prioridade=3 nivel=baixa",
+      "hash": "56b21850afdff2e4d00d7844733660078a5e826b7f4d835e4f80eb0b990060ff"
+    },
+    {
+      "id": 15,
+      "ts": "2026-11-16T22:20:46",
+      "execucao": "c82ed9a9",
+      "ocorrencia_id": 10,
+      "evento": "VALIDADA",
+      "detalhe": "prioridade=2 nivel=baixa",
+      "hash": "e6f8a6507558487725e837b830882598b8ac804b2b530f0447cfc6d09ea1b06f"
+    },
+    {
+      "id": 16,
+      "ts": "2026-11-16T22:20:46",
+      "execucao": "c82ed9a9",
+      "ocorrencia_id": 9,
+      "evento": "ENCAMINHADA",
+      "detalhe": "CL-2026-C640CFD0",
+      "hash": "0061232c6a8c2da42cef4c552120f24e05a3bd6647d5e5c5aeb5d84967a18635"
+    },
+    {
+      "id": 17,
+      "ts": "2026-11-16T22:20:46",
+      "execucao": "c82ed9a9",
+      "ocorrencia_id": 10,
+      "evento": "ENCAMINHADA",
+      "detalhe": "CL-2026-EB941EE2",
+      "hash": "b7088524f6aa089974b8f588140bb6e6b4ef6119415a8ce43517d94daa9c145f"
+    },
+    {
+      "id": 18,
+      "ts": "2026-11-16T22:20:46",
+      "execucao": "c82ed9a9",
+      "ocorrencia_id": null,
+      "evento": "RESUMO",
+      "detalhe": "{'processados': 3, 'sucessos': 3, 'falhas': 0}",
+      "hash": "e36d65f6fc62a0a018d186b767730d9196889a7482a36899334bfbd80eb37dfb"
+    },
+    {
+      "id": 19,
+      "ts": "2026-11-16T22:20:49",
+      "execucao": "6feecbff",
+      "ocorrencia_id": 11,
+      "evento": "ERRO_PROCESSAMENTO",
+      "detalhe": "tentativa 1: TypeError: '<' not supported between instances of 'int' and 'NoneType'",
+      "hash": "b1d042018c4b93cf76e879c2f4163301ef2147d303c7a39d574609aff5cdae90"
+    },
+    {
+      "id": 20,
+      "ts": "2026-11-16T22:20:49",
+      "execucao": "6feecbff",
+      "ocorrencia_id": null,
+      "evento": "RESUMO",
+      "detalhe": "{'processados': 1, 'sucessos': 0, 'falhas': 1}",
+      "hash": "00000288cd36c0a092066e94d3d5831e1e246919dfe6ce3178b7652f539a5cb8"
+    },
+    {
+      "id": 21,
+      "ts": "2026-11-16T22:20:52",
+      "execucao": "68a9bd7c",
+      "ocorrencia_id": 11,
+      "evento": "ERRO_PROCESSAMENTO",
+      "detalhe": "tentativa 2: TypeError: '<' not supported between instances of 'int' and 'NoneType'",
+      "hash": "108ebf27dc84efa440b044dcec8483875a18f579e36e11329b6ddcdccbe7333f"
+    },
+    {
+      "id": 22,
+      "ts": "2026-11-16T22:20:52",
+      "execucao": "68a9bd7c",
+      "ocorrencia_id": null,
+      "evento": "RESUMO",
+      "detalhe": "{'processados': 1, 'sucessos': 0, 'falhas': 1}",
+      "hash": "64231bf001812157d87781a63590ab5d9111567e3d6ecb4116cef6b2bc94aa33"
+    },
+    {
+      "id": 23,
+      "ts": "2026-11-16T22:20:55",
+      "execucao": "ab9e34ab",
+      "ocorrencia_id": 11,
+      "evento": "ERRO_PROCESSAMENTO",
+      "detalhe": "tentativa 3: TypeError: '<' not supported between instances of 'int' and 'NoneType'",
+      "hash": "3971dd696475d117dc1672ff0a143773cda5a01350271344271f82ab0ddf98d6"
+    },
+    {
+      "id": 24,
+      "ts": "2026-11-16T22:20:55",
+      "execucao": "ab9e34ab",
+      "ocorrencia_id": null,
+      "evento": "RESUMO",
+      "detalhe": "{'processados': 1, 'sucessos': 0, 'falhas': 1}",
+      "hash": "a5d7701d84b4027e6ca5d4dbc219473db877becdcd0eb45834c9e1a42dc3a157"
+    },
+    {
+      "id": 25,
+      "ts": "2026-11-16T22:20:59",
+      "execucao": "manual",
+      "ocorrencia_id": 10,
+      "evento": "APAGADA",
+      "detalhe": "exclusão a pedido do titular",
+      "hash": "09770ac7114019917428402289447908baff8496f8a647661fc2e5c80539c0e3"
+    },
+    {
+      "id": 26,
+      "ts": "2026-11-16T22:20:59",
+      "execucao": "retencao",
+      "ocorrencia_id": null,
+      "evento": "RETENCAO",
+      "detalhe": "dias=90 ocorrencias=1 fotos=1 arquivos=1",
+      "hash": "59d754a751e8552e379d4828cbef3d6cc1e8159929515a4fb302568d3d3a7b51"
+    }
+  ]
+}

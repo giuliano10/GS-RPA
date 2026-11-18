@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 760" width="680" height="760" font-family="Arial, Helvetica, sans-serif" role="img" aria-label="Fluxo geral do robô Caminho Livre">
+<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#555" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="680" height="760" fill="#ffffff"/>
+<rect x="190" y="30" width="300" height="56" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+<text x="340.0" y="52.0" text-anchor="middle" font-size="14" font-weight="bold" fill="#2C2C2A">Início do ciclo</text>
+<text x="340.0" y="72.0" text-anchor="middle" font-size="12" fill="#2C2C2A">Agendador, de 1 em 1 minuto</text>
+<rect x="190" y="116" width="300" height="56" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+<text x="340.0" y="138.0" text-anchor="middle" font-size="14" font-weight="bold" fill="#26215C">Trava de execução única</text>
+<text x="340.0" y="158.0" text-anchor="middle" font-size="12" fill="#26215C">Se já há execução, ignora o ciclo</text>
+<rect x="190" y="202" width="300" height="56" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+<text x="340.0" y="224.0" text-anchor="middle" font-size="14" font-weight="bold" fill="#2C2C2A">Fontes de entrada</text>
+<text x="340.0" y="244.0" text-anchor="middle" font-size="12" fill="#2C2C2A">Cidadão + CSV da pasta entrada/</text>
+<rect x="190" y="288" width="300" height="56" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+<text x="340.0" y="310.0" text-anchor="middle" font-size="14" font-weight="bold" fill="#26215C">Para cada ocorrência da fila</text>
+<text x="340.0" y="330.0" text-anchor="middle" font-size="12" fill="#26215C">Detalhe no fluxo por ocorrência</text>
+<rect x="190" y="374" width="300" height="56" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+<text x="340.0" y="396.0" text-anchor="middle" font-size="14" font-weight="bold" fill="#26215C">Ordenar por prioridade</text>
+<text x="340.0" y="416.0" text-anchor="middle" font-size="12" fill="#26215C">Maior prioridade primeiro</text>
+<rect x="190" y="460" width="300" height="56" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+<text x="340.0" y="482.0" text-anchor="middle" font-size="14" font-weight="bold" fill="#26215C">Encaminhar o lote</text>
+<text x="340.0" y="502.0" text-anchor="middle" font-size="12" fill="#26215C">Até 3 tentativas</text>
+<path d="M340 86 L340 114" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<path d="M340 172 L340 200" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<path d="M340 258 L340 286" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<path d="M340 344 L340 372" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<path d="M340 430 L340 458" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<path d="M340 516 L340 531 L185 531 L185 544" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<path d="M340 531 L495 531 L495 544" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="60" y="546" width="250" height="56" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+<text x="185.0" y="568.0" text-anchor="middle" font-size="14" font-weight="bold" fill="#26215C">Sucesso</text>
+<text x="185.0" y="588.0" text-anchor="middle" font-size="12" fill="#26215C">Status encaminhada + JSON e CSV</text>
+<rect x="370" y="546" width="250" height="56" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+<text x="495.0" y="568.0" text-anchor="middle" font-size="14" font-weight="bold" fill="#412402">Falhou 3 vezes</text>
+<text x="495.0" y="588.0" text-anchor="middle" font-size="12" fill="#412402">Reprocessa no próximo ciclo</text>
+<path d="M185 602 L185 630" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<path d="M495 602 L495 630" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="60" y="632" width="560" height="56" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+<text x="340.0" y="654.0" text-anchor="middle" font-size="14" font-weight="bold" fill="#2C2C2A">Fim do ciclo</text>
+<text x="340.0" y="674.0" text-anchor="middle" font-size="12" fill="#2C2C2A">Log, auditoria encadeada, alertas e batimento do robô</text>
+<rect x="60" y="722" width="12" height="12" rx="2" fill="#F1EFE8" stroke="#5F5E5A"/>
+<text x="80" y="732" text-anchor="start" font-size="12" fill="#555">dados e marcos</text>
+<rect x="192.39999999999998" y="722" width="12" height="12" rx="2" fill="#EEEDFE" stroke="#534AB7"/>
+<text x="212.39999999999998" y="732" text-anchor="start" font-size="12" fill="#555">etapa do robô</text>
+<rect x="318.2" y="722" width="12" height="12" rx="2" fill="#FAEEDA" stroke="#854F0B"/>
+<text x="338.2" y="732" text-anchor="start" font-size="12" fill="#555">falha ou exceção</text>
+</svg>

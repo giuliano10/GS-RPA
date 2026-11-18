@@ -1,0 +1,77 @@
+Teste de integração ponta a ponta - executado em 16/11/2026 22:20:43
+Comando: python tests/test_integracao.py --saida logs
+
+Porta: 8765
+
+PASSOU  servidor sobe
+
+== SEGURANÇA
+PASSOU  GET /api/v1/resumo sem chave é negado
+PASSOU  GET /api/v1/integridade sem chave é negado
+PASSOU  GET /uploads/x.jpg sem chave é negado
+PASSOU  POST /api/robo sem chave é negado
+PASSOU  painel sem login mostra a tela de login
+PASSOU  login com chave errada é recusado
+PASSOU  login correto devolve cookie HttpOnly e SameSite=Strict
+PASSOU  painel abre com o cookie
+PASSOU  API aceita X-API-Key
+PASSOU  cabeçalhos de segurança presentes e sem versão do Python
+
+== AGENDADOR: o CSV da pasta entrada/ é importado sozinho (sem clique)
+PASSOU  importou e processou o CSV automaticamente  ->  {'duplicada': 2, 'encaminhada': 3, 'rejeitada': 2}
+PASSOU  3 encaminhadas, 2 duplicadas e 2 rejeitadas (regras de negócio)
+PASSOU  alerta de prioridade ALTA gerado (buraco relatado 3 vezes)
+PASSOU  batimento do robô registrado
+
+== LGPD E ENVIO DO CIDADÃO
+PASSOU  envio sem aceitar o aviso de privacidade é recusado
+PASSOU  arquivo que não é imagem é recusado
+PASSOU  envio válido gera código de acompanhamento
+PASSOU  fotos guardadas não contêm GPS/EXIF  ->  3 foto(s)
+PASSOU  relato repetido (CSV + cidadão) vira duplicada  ->  deduplicação entre fontes
+PASSOU  relato novo é encaminhado com protocolo
+
+== RESILIÊNCIA: nada falha em silêncio
+PASSOU  CSV defeituoso gera alerta de falha de importação
+PASSOU  CSV defeituoso é movido para entrada/erro/
+PASSOU  registro defeituoso vai para quarentena após 3 falhas (não trava a fila)
+PASSOU  falha da execução gera alerta de falha do robô
+PASSOU  histórico traz data/hora, processados, sucessos, falhas e mensagem de erro
+PASSOU  ciclos sem itens não poluem o histórico  ->  5 execuções com itens
+
+== TRAVA DE EXECUÇÃO ÚNICA
+PASSOU  com outra execução em andamento a nova é ignorada (409)
+PASSOU  trava abandonada é removida sozinha
+
+== DIREITO DE EXCLUSÃO
+PASSOU  titular apaga o próprio relato com o código
+PASSOU  a foto também é apagada
+PASSOU  relato apagado não é mais encontrado
+
+== RETENÇÃO (90 dias)
+PASSOU  dados, fotos e arquivos com mais de 90 dias são apagados  ->  {'dias': 90, 'ocorrencias': 1, 'fotos': 1, 'arquivos': 1}
+
+== INTEGRAÇÃO VERIFICÁVEL AO MVP
+PASSOU  banco, arquivos de saída e API estão consistentes  ->  banco=4 api=4 auditoria_integra=True
+PASSOU  endpoint /api/v1/integridade confirma
+
+== AUDITORIA ADULTERADA É DETECTADA
+PASSOU  verificação acusa a divergência (código de saída 1)  ->  primeira divergência no registro 3
+
+== LIMITE DE REQUISIÇÕES
+PASSOU  após 20 envios por minuto o IP recebe 429  ->  10 bloqueios
+
+== LOGS SEM DADOS SENSÍVEIS
+PASSOU  o termo 'Manoel' não aparece nos logs
+PASSOU  o termo 'padaria' não aparece nos logs
+PASSOU  o termo 'Rua Teste' não aparece nos logs
+PASSOU  o termo 'Rua Nova' não aparece nos logs
+PASSOU  o termo 'Flores' não aparece nos logs
+PASSOU  o termo '127.0.0.1' não aparece nos logs
+PASSOU  o termo 'GPSLat' não aparece nos logs
+PASSOU  o termo '11999990000' não aparece nos logs
+PASSOU  código de acompanhamento 1 não aparece nos logs
+PASSOU  código 2 não aparece nos logs
+PASSOU  código 3 não aparece nos logs
+
+RESULTADO: 48/48 verificações passaram

@@ -1,0 +1,18 @@
+2026-11-18 19:01:28,334 | INFO | Agendador ligado: ciclo a cada 1 minuto(s). Ctrl+C para parar.
+2026-11-18 19:01:28,338 | INFO | Importação da origem prefeitura: lidas=7 importadas=7 ignoradas=0
+2026-11-18 19:01:28,340 | INFO | Execução 7ab59cd6 iniciada: 7 item(ns) na fila
+2026-11-18 19:01:28,341 | INFO | Ocorrência 1: validada, protocolo CL-2026-329EEC16, prioridade media
+2026-11-18 19:01:28,342 | INFO | Ocorrência 2: duplicada da 1
+2026-11-18 19:01:28,344 | INFO | Alerta prioridade_alta: ocorrência 1, protocolo CL-2026-329EEC16
+2026-11-18 19:01:28,344 | INFO | Ocorrência 3: duplicada da 1
+2026-11-18 19:01:28,345 | INFO | Ocorrência 4: validada, protocolo CL-2026-164C36E6, prioridade media
+2026-11-18 19:01:28,345 | INFO | Ocorrência 5: validada, protocolo CL-2026-FE8CF3C6, prioridade media
+2026-11-18 19:01:28,347 | INFO | Ocorrência 6: rejeitada (categoria inválida: xyz)
+2026-11-18 19:01:28,348 | INFO | Ocorrência 7: rejeitada (campos obrigatórios ausentes: rua)
+2026-11-18 19:01:28,350 | INFO | Ocorrência 1: encaminhada, protocolo CL-2026-329EEC16
+2026-11-18 19:01:28,350 | INFO | Ocorrência 4: encaminhada, protocolo CL-2026-164C36E6
+2026-11-18 19:01:28,350 | INFO | Ocorrência 5: encaminhada, protocolo CL-2026-FE8CF3C6
+2026-11-18 19:01:28,351 | INFO | Execução 7ab59cd6 finalizada: processados=7 sucessos=7 falhas=0 (encaminhadas=3 duplicadas=2 rejeitadas=2)
+2026-11-18 19:01:28,355 | INFO | Retenção (90 dias): ocorrências=0 fotos=0 arquivos=0
+2026-11-18 19:02:11,527 | INFO | HTTP GET / -> 200
+2026-11-18 19:02:11,580 | INFO | HTTP GET /favicon.ico -> 404

@@ -1,0 +1,111 @@
+2026-11-16 22:20:43,780 | INFO | Agendador ligado: ciclo a cada 0.05 minuto(s). Ctrl+C para parar.
+2026-11-16 22:20:43,785 | INFO | Importação da origem prefeitura: lidas=7 importadas=7 ignoradas=0
+2026-11-16 22:20:43,785 | INFO | Execução 5ac05b79 iniciada: 7 item(ns) na fila
+2026-11-16 22:20:43,786 | INFO | Ocorrência 1: validada, protocolo CL-2026-1EABB3F0, prioridade media
+2026-11-16 22:20:43,788 | INFO | Ocorrência 2: duplicada da 1
+2026-11-16 22:20:43,789 | INFO | Alerta prioridade_alta: ocorrência 1, protocolo CL-2026-1EABB3F0
+2026-11-16 22:20:43,789 | INFO | Ocorrência 3: duplicada da 1
+2026-11-16 22:20:43,790 | INFO | Ocorrência 4: validada, protocolo CL-2026-CB76512C, prioridade media
+2026-11-16 22:20:43,790 | INFO | Ocorrência 5: validada, protocolo CL-2026-6EB2BC9D, prioridade media
+2026-11-16 22:20:43,791 | INFO | Ocorrência 6: rejeitada (categoria inválida: xyz)
+2026-11-16 22:20:43,792 | INFO | Ocorrência 7: rejeitada (campos obrigatórios ausentes: rua)
+2026-11-16 22:20:43,794 | INFO | Ocorrência 1: encaminhada, protocolo CL-2026-1EABB3F0
+2026-11-16 22:20:43,794 | INFO | Ocorrência 4: encaminhada, protocolo CL-2026-CB76512C
+2026-11-16 22:20:43,795 | INFO | Ocorrência 5: encaminhada, protocolo CL-2026-6EB2BC9D
+2026-11-16 22:20:43,796 | INFO | Execução 5ac05b79 finalizada: processados=7 sucessos=7 falhas=0 (encaminhadas=3 duplicadas=2 rejeitadas=2)
+2026-11-16 22:20:43,799 | INFO | Retenção (90 dias): ocorrências=0 fotos=0 arquivos=0
+2026-11-16 22:20:44,084 | INFO | HTTP GET / -> 200
+2026-11-16 22:20:44,085 | WARNING | Acesso negado a /api/v1/resumo (sem chave válida)
+2026-11-16 22:20:44,086 | INFO | HTTP GET /api/v1/resumo -> 401
+2026-11-16 22:20:44,086 | WARNING | Acesso negado a /api/v1/integridade (sem chave válida)
+2026-11-16 22:20:44,087 | INFO | HTTP GET /api/v1/integridade -> 401
+2026-11-16 22:20:44,087 | WARNING | Acesso negado a /uploads/x.jpg (sem chave válida)
+2026-11-16 22:20:44,088 | INFO | HTTP GET /uploads/[arquivo] -> 401
+2026-11-16 22:20:44,088 | WARNING | Acesso negado a /api/robo (sem chave válida)
+2026-11-16 22:20:44,088 | INFO | HTTP POST /api/robo -> 401
+2026-11-16 22:20:44,089 | INFO | HTTP GET /painel -> 401
+2026-11-16 22:20:44,090 | WARNING | Tentativa de login recusada
+2026-11-16 22:20:44,090 | INFO | HTTP POST /login -> 401
+2026-11-16 22:20:44,091 | INFO | HTTP POST /login -> 303
+2026-11-16 22:20:44,092 | INFO | HTTP GET /painel -> 200
+2026-11-16 22:20:44,093 | INFO | HTTP GET /api/v1/resumo -> 200
+2026-11-16 22:20:44,094 | INFO | HTTP GET / -> 200
+2026-11-16 22:20:44,095 | INFO | HTTP GET /api/v1/resumo -> 200
+2026-11-16 22:20:44,096 | INFO | HTTP GET /api/v1/alertas -> 200
+2026-11-16 22:20:44,098 | INFO | HTTP GET /api/v1/resumo -> 200
+2026-11-16 22:20:44,099 | INFO | HTTP POST /api/ocorrencias -> 400
+2026-11-16 22:20:44,100 | INFO | HTTP POST /api/ocorrencias -> 400
+2026-11-16 22:20:44,103 | INFO | Ocorrência 8 recebida
+2026-11-16 22:20:44,103 | INFO | HTTP POST /api/ocorrencias -> 201
+2026-11-16 22:20:44,106 | INFO | Ocorrência 9 recebida
+2026-11-16 22:20:44,106 | INFO | HTTP POST /api/ocorrencias -> 201
+2026-11-16 22:20:44,109 | INFO | Ocorrência 10 recebida
+2026-11-16 22:20:44,109 | INFO | HTTP POST /api/ocorrencias -> 201
+2026-11-16 22:20:44,110 | INFO | HTTP GET /api/acompanhar/[codigo] -> 200
+2026-11-16 22:20:44,513 | INFO | HTTP GET /api/acompanhar/[codigo] -> 200
+2026-11-16 22:20:44,915 | INFO | HTTP GET /api/acompanhar/[codigo] -> 200
+2026-11-16 22:20:45,317 | INFO | HTTP GET /api/acompanhar/[codigo] -> 200
+2026-11-16 22:20:45,720 | INFO | HTTP GET /api/acompanhar/[codigo] -> 200
+2026-11-16 22:20:46,123 | INFO | HTTP GET /api/acompanhar/[codigo] -> 200
+2026-11-16 22:20:46,525 | INFO | HTTP GET /api/acompanhar/[codigo] -> 200
+2026-11-16 22:20:46,801 | INFO | Execução c82ed9a9 iniciada: 3 item(ns) na fila
+2026-11-16 22:20:46,802 | INFO | Ocorrência 8: duplicada da 1
+2026-11-16 22:20:46,804 | INFO | Ocorrência 9: validada, protocolo CL-2026-C640CFD0, prioridade baixa
+2026-11-16 22:20:46,805 | INFO | Ocorrência 10: validada, protocolo CL-2026-EB941EE2, prioridade baixa
+2026-11-16 22:20:46,807 | INFO | Ocorrência 9: encaminhada, protocolo CL-2026-C640CFD0
+2026-11-16 22:20:46,807 | INFO | Ocorrência 10: encaminhada, protocolo CL-2026-EB941EE2
+2026-11-16 22:20:46,808 | INFO | Execução c82ed9a9 finalizada: processados=3 sucessos=3 falhas=0 (encaminhadas=2 duplicadas=1 rejeitadas=0)
+2026-11-16 22:20:46,928 | INFO | HTTP GET /api/acompanhar/[codigo] -> 200
+2026-11-16 22:20:46,929 | INFO | HTTP GET /api/acompanhar/[codigo] -> 200
+2026-11-16 22:20:46,930 | INFO | HTTP GET /api/acompanhar/[codigo] -> 200
+2026-11-16 22:20:46,934 | INFO | HTTP GET /api/v1/alertas -> 200
+2026-11-16 22:20:47,337 | INFO | HTTP GET /api/v1/alertas -> 200
+2026-11-16 22:20:47,739 | INFO | HTTP GET /api/v1/alertas -> 200
+2026-11-16 22:20:48,142 | INFO | HTTP GET /api/v1/alertas -> 200
+2026-11-16 22:20:48,544 | INFO | HTTP GET /api/v1/alertas -> 200
+2026-11-16 22:20:48,947 | INFO | HTTP GET /api/v1/alertas -> 200
+2026-11-16 22:20:49,351 | INFO | HTTP GET /api/v1/alertas -> 200
+2026-11-16 22:20:49,755 | INFO | HTTP GET /api/v1/alertas -> 200
+2026-11-16 22:20:49,810 | ERROR | Falha ao importar arquivo da pasta de entrada (ValueError: colunas ausentes no CSV: categoria, rua, referencia)
+2026-11-16 22:20:49,811 | INFO | Alerta falha_importacao: ocorrência None, protocolo None
+2026-11-16 22:20:49,813 | INFO | Execução 6feecbff iniciada: 1 item(ns) na fila
+2026-11-16 22:20:49,814 | ERROR | Ocorrência 11: falha no processamento, tentativa 1/3 (TypeError: '<' not supported between instances of 'int' and 'NoneType')
+2026-11-16 22:20:49,815 | INFO | Alerta falha_robo: ocorrência None, protocolo None
+2026-11-16 22:20:49,816 | INFO | Execução 6feecbff finalizada: processados=1 sucessos=0 falhas=1 (encaminhadas=0 duplicadas=0 rejeitadas=0)
+2026-11-16 22:20:50,158 | INFO | HTTP GET /api/v1/alertas -> 200
+2026-11-16 22:20:50,560 | INFO | HTTP GET /api/v1/alertas -> 200
+2026-11-16 22:20:50,963 | INFO | HTTP GET /api/v1/alertas -> 200
+2026-11-16 22:20:51,366 | INFO | HTTP GET /api/v1/alertas -> 200
+2026-11-16 22:20:51,769 | INFO | HTTP GET /api/v1/alertas -> 200
+2026-11-16 22:20:52,171 | INFO | HTTP GET /api/v1/alertas -> 200
+2026-11-16 22:20:52,573 | INFO | HTTP GET /api/v1/alertas -> 200
+2026-11-16 22:20:52,817 | INFO | Execução 68a9bd7c iniciada: 1 item(ns) na fila
+2026-11-16 22:20:52,818 | ERROR | Ocorrência 11: falha no processamento, tentativa 2/3 (TypeError: '<' not supported between instances of 'int' and 'NoneType')
+2026-11-16 22:20:52,820 | INFO | Execução 68a9bd7c finalizada: processados=1 sucessos=0 falhas=1 (encaminhadas=0 duplicadas=0 rejeitadas=0)
+2026-11-16 22:20:52,976 | INFO | HTTP GET /api/v1/alertas -> 200
+2026-11-16 22:20:53,378 | INFO | HTTP GET /api/v1/alertas -> 200
+2026-11-16 22:20:53,780 | INFO | HTTP GET /api/v1/alertas -> 200
+2026-11-16 22:20:54,183 | INFO | HTTP GET /api/v1/alertas -> 200
+2026-11-16 22:20:54,585 | INFO | HTTP GET /api/v1/alertas -> 200
+2026-11-16 22:20:54,988 | INFO | HTTP GET /api/v1/alertas -> 200
+2026-11-16 22:20:55,390 | INFO | HTTP GET /api/v1/alertas -> 200
+2026-11-16 22:20:55,792 | INFO | HTTP GET /api/v1/alertas -> 200
+2026-11-16 22:20:55,822 | INFO | Execução ab9e34ab iniciada: 1 item(ns) na fila
+2026-11-16 22:20:55,823 | INFO | Alerta ocorrencia_em_quarentena: ocorrência 11, protocolo None
+2026-11-16 22:20:55,823 | ERROR | Ocorrência 11: falha no processamento, tentativa 3/3 (TypeError: '<' not supported between instances of 'int' and 'NoneType')
+2026-11-16 22:20:55,825 | INFO | Execução ab9e34ab finalizada: processados=1 sucessos=0 falhas=1 (encaminhadas=0 duplicadas=0 rejeitadas=0)
+2026-11-16 22:20:56,195 | INFO | HTTP GET /api/v1/alertas -> 200
+2026-11-16 22:20:56,206 | INFO | HTTP GET /api/v1/resumo -> 200
+2026-11-16 22:20:56,210 | INFO | HTTP GET /api/v1/alertas -> 200
+2026-11-16 22:20:56,212 | INFO | HTTP GET /api/v1/execucoes -> 200
+2026-11-16 22:20:56,215 | WARNING | Ciclo ignorado: outra execução está em andamento
+2026-11-16 22:20:56,216 | INFO | HTTP POST /api/robo -> 409
+2026-11-16 22:20:58,827 | WARNING | Trava antiga removida
+2026-11-16 22:20:59,025 | INFO | Ocorrência 10 apagada a pedido do titular
+2026-11-16 22:20:59,025 | INFO | HTTP POST /api/apagar -> 200
+2026-11-16 22:20:59,027 | INFO | HTTP GET /api/acompanhar/[codigo] -> 404
+2026-11-16 22:20:59,099 | INFO | Retenção (90 dias): ocorrências=1 fotos=1 arquivos=1
+2026-11-16 22:20:59,204 | INFO | HTTP GET /api/v1/encaminhamentos -> 200
+2026-11-16 22:20:59,205 | INFO | HTTP GET /api/v1/encaminhamentos -> 200
+2026-11-16 22:20:59,206 | INFO | Verificação de integridade: consistente=True
+2026-11-16 22:20:59,225 | INFO | HTTP GET /api/v1/integridade -> 200

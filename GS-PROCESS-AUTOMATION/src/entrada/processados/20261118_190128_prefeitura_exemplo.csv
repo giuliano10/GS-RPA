@@ -1,0 +1,8 @@
+id_externo,categoria,rua,referencia,descricao
+PM-001,buraco,Rua Manoel Coelho,Em frente à padaria Pão Doce,Buraco grande informado pela subprefeitura
+PM-002,buraco,R. Manoel Coelho,Em frente a padaria,Mesmo buraco informado por outra equipe
+PM-003,buraco,Rua Manoel Coelho,em frente a padaria Pao Doce,Terceiro relato do mesmo buraco
+PM-004,desnível,Avenida Goiás,Perto do ponto de ônibus,Desnível na calçada
+PM-005,obra,Rua Santo Antônio,Esquina com a farmácia,Obra ocupando a calçada
+PM-006,xyz,Rua Baraldi,Praça central,Categoria inexistente (teste de rejeição)
+PM-007,lixeira,,Ao lado da escola,Sem rua (teste de rejeição)
