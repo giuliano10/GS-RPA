@@ -189,43 +189,166 @@ def limitar(ip, grupo, maximo):
 
 
 # ---------- páginas ----------
-ESTILO = """
- body{font-family:system-ui,sans-serif;max-width:760px;margin:24px auto;padding:0 16px;color:#1b1b1b}
- h1{margin-bottom:0} .sub{color:#555;margin-top:4px}
- form,.card{border:1px solid #ccc;border-radius:10px;padding:16px;margin:16px 0}
- label{display:block;margin:10px 0 4px;font-weight:600}
- input,select,textarea,button{font:inherit;padding:8px;width:100%;box-sizing:border-box}
- input[type=checkbox]{width:auto;margin-right:8px}
- button{cursor:pointer;background:#0a6;color:#fff;border:0;border-radius:8px;margin-top:12px}
- button.sec{background:#345} button.perigo{background:#b00}
- .aviso{background:#f6f3e6;border:1px solid #d8cfa3;border-radius:10px;padding:12px;font-size:14px}
- #prev{max-width:100%;max-height:220px;margin-top:8px;display:none;border-radius:8px}
- #msg,#res{margin-top:10px;font-weight:600} .ok{color:#080}.err{color:#b00}
- a{color:#06c}
+# Identidade visual: escuro + magenta (mesma linguagem dos slides da CitizenTech).
+# Só apresentação: ids, rotas, chamadas à API e regras continuam as mesmas.
+LOGO = """<svg class="logo" viewBox="0 0 32 32" aria-hidden="true">
+ <rect width="32" height="32" rx="9" fill="#E6195A"/>
+ <path d="M8.5 26.5C8.5 20 19 22.5 21.5 15.5" fill="none" stroke="#fff" stroke-width="2.4"
+  stroke-linecap="round" stroke-dasharray="0.01 4.2"/>
+ <path d="M22 4.5a5.2 5.2 0 0 0-5.2 5.2c0 3.8 5.2 8.3 5.2 8.3s5.2-4.5 5.2-8.3A5.2 5.2 0 0 0 22 4.5z" fill="#fff"/>
+ <circle cx="22" cy="9.7" r="2" fill="#E6195A"/></svg>"""
+
+MARCA = ("""<a class="marca" href="/">""" + LOGO +
+         """<span><b>Caminho Livre</b><small>CitizenTech</small></span></a>""")
+
+FAVICON = ("""<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' """
+           """viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23E6195A'/%3E"""
+           """%3Cpath d='M22 4.5a5.2 5.2 0 0 0-5.2 5.2c0 3.8 5.2 8.3 5.2 8.3s5.2-4.5 5.2-8.3A5.2 5.2 0 0 0 22 4.5z' """
+           """fill='white'/%3E%3C/svg%3E">""")
+
+BASE = """
+ :root{--bg:#f4f5f7;--card:#fff;--ink:#14161b;--muted:#646b78;--line:#e4e6eb;--soft:#f8f9fb;
+  --brand:#E6195A;--brand-2:#c2124a;--brand-bg:#fde8ef;--dark:#0e1014;--dark-2:#171a21;
+  --ok:#0f8a4f;--ok-bg:#e6f6ee;--warn:#b45d06;--warn-bg:#fdf1e2;--bad:#c62828;--bad-bg:#fdecec;
+  --r:16px;--sh:0 1px 2px rgba(16,24,40,.05),0 8px 24px rgba(16,24,40,.06)}
+ *{box-sizing:border-box}
+ body{margin:0;background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;
+  font-family:Inter,"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif}
+ a{color:var(--brand);text-decoration:none} a:hover{text-decoration:underline}
+ code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.9em;background:var(--soft);
+  border:1px solid var(--line);border-radius:6px;padding:1px 6px}
+ .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+ .topo{background:var(--dark);color:#fff;border-bottom:1px solid #22262f}
+ .topo .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
+ .marca{display:flex;align-items:center;gap:10px;color:#fff} .marca:hover{text-decoration:none}
+ .marca .logo{width:34px;height:34px;flex:none}
+ .marca b{display:block;font-size:17px;letter-spacing:-.01em;line-height:1.1}
+ .marca small{display:block;font-size:11px;color:#9aa1ad;letter-spacing:.08em;text-transform:uppercase}
+ .nav{display:flex;gap:6px;flex-wrap:wrap}
+ .nav a{color:#d5d9e0;font-size:14px;font-weight:500;padding:8px 14px;border-radius:999px;border:1px solid #2b303a}
+ .nav a:hover{text-decoration:none;color:#fff;border-color:var(--brand);background:rgba(230,25,90,.12)}
+ @media (max-width:560px){.wrap{padding:0 16px}.nav a{font-size:13px;padding:6px 10px}.marca small{display:none}.card{padding:20px}}
+ .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:24px}
+ .card h2{font-size:19px;margin:0 0 4px;letter-spacing:-.01em} .card .desc{color:var(--muted);margin:0 0 16px;font-size:14px}
+ label{display:block;margin:16px 0 6px;font-weight:600;font-size:14px}
+ input,select,textarea{font:inherit;font-size:15px;width:100%;padding:12px 14px;border:1px solid #d4d8df;
+  border-radius:12px;background:#fff;color:var(--ink);transition:border-color .15s,box-shadow .15s}
+ input::placeholder,textarea::placeholder{color:#9aa1ad}
+ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 4px rgba(230,25,90,.14)}
+ select{appearance:none;-webkit-appearance:none;padding-right:40px;cursor:pointer;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23646b78' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 16px center}
+ textarea{resize:vertical;min-height:84px}
+ button{font:inherit;font-weight:600;font-size:15px;cursor:pointer;border:0;border-radius:12px;padding:12px 18px;
+  background:var(--brand);color:#fff;transition:background .15s,transform .05s,box-shadow .15s}
+ button:hover{background:var(--brand-2)} button:active{transform:translateY(1px)}
+ button:focus-visible,a:focus-visible{outline:3px solid rgba(230,25,90,.45);outline-offset:2px}
+ button.sec{background:#fff;color:var(--ink);border:1px solid #d4d8df} button.sec:hover{background:var(--soft)}
+ button.perigo{background:#fff;color:var(--bad);border:1px solid #f1c4c4} button.perigo:hover{background:var(--bad-bg)}
+ .ok{color:var(--ok)} .err{color:var(--bad)}
+ .rodape{color:var(--muted);font-size:13px;padding:32px 0 40px;text-align:center}
+ .rodape b{color:var(--ink)}
 """
+
+ESTILO = BASE + """
+ .hero{background:linear-gradient(135deg,#0e1014 0%,#1a1220 60%,#2a0f1d 100%);color:#fff;position:relative;overflow:hidden}
+ .hero:before{content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
+  background:repeating-linear-gradient(115deg,transparent 0 140px,rgba(255,255,255,.035) 140px 141px)}
+ .hero .wrap{position:relative;padding-top:56px;padding-bottom:120px}
+ .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:#ffb3c9;background:rgba(230,25,90,.14);border:1px solid rgba(230,25,90,.35);
+  padding:6px 12px;border-radius:999px}
+ .hero h1{font-size:clamp(28px,4.2vw,46px);line-height:1.1;letter-spacing:-.025em;margin:18px 0 14px;max-width:780px}
+ .hero h1 em{font-style:normal;color:var(--brand)}
+ .hero p.sub{color:#c3c8d1;font-size:17px;max-width:640px;margin:0}
+ .passos{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;padding:0;list-style:none}
+ .passos li{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;padding:10px 14px;font-size:14px;color:#e6e9ee}
+ .passos li span{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--brand);
+  color:#fff;font-weight:700;font-size:12px}
+ .grade{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:24px;margin-top:-84px;position:relative;
+  grid-template-rows:auto 1fr;grid-template-areas:"form aviso" "form acomp";align-items:start}
+ #f{grid-area:form} .aviso{grid-area:aviso} .acomp{grid-area:acomp}
+ @media (max-width:880px){.grade{grid-template-columns:1fr;grid-template-areas:"aviso" "form" "acomp"}}
+ .aviso{font-size:14px;color:#3b414c}
+ .aviso h3{display:flex;align-items:center;gap:10px;font-size:16px;margin:0 0 10px;color:var(--ink)}
+ .aviso h3 svg,.acomp h2 svg{width:22px;height:22px;flex:none}
+ .aviso p{margin:0 0 10px} .aviso p:last-child{margin:0}
+ .aviso .destaque{background:var(--brand-bg);border-radius:10px;padding:10px 12px;color:#7a0f33}
+ .linha{display:grid;grid-template-columns:1fr 1fr;gap:0 16px} @media (max-width:560px){.linha{grid-template-columns:1fr}}
+ .drop{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  gap:6px;min-height:150px;border:2px dashed #d4d8df;border-radius:14px;background:var(--soft);padding:18px;
+  transition:border-color .15s,background .15s;overflow:hidden}
+ .drop:hover,.drop:focus-within{border-color:var(--brand);background:#fff7fa}
+ .drop input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+ .drop .ic{display:grid;place-items:center;width:46px;height:46px;border-radius:12px;background:var(--brand-bg);color:var(--brand)}
+ .drop .ic svg{width:24px;height:24px}
+ .dica{display:flex;flex-direction:column;align-items:center;gap:6px} .dica br{display:none}
+ .drop strong{font-size:15px} .drop small{color:var(--muted);font-size:13px}
+ .drop:has(#prev[style*="block"]) .dica{display:none}
+ .drop:has(#prev[style*="block"]){padding:8px;border-style:solid}
+ #prev{max-width:100%;max-height:280px;display:none;border-radius:10px}
+ .check{display:flex;align-items:flex-start;gap:10px;font-weight:500;background:var(--soft);border:1px solid var(--line);
+  border-radius:12px;padding:12px 14px;margin-top:18px;cursor:pointer}
+ .check input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--brand);flex:none}
+ #f button[type=submit]{width:100%;margin-top:18px;padding:14px 18px;font-size:16px;box-shadow:0 8px 20px rgba(230,25,90,.25)}
+ .acoes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+ .acoes button{font-size:14px;padding:12px 10px;white-space:nowrap}
+ @media (max-width:420px){.acoes{grid-template-columns:1fr}}
+ .acomp h2{display:flex;align-items:center;gap:10px}
+ #msg,#res{margin-top:14px;font-weight:600;font-size:14px;border-radius:12px;padding:12px 14px;background:var(--soft);
+  border:1px solid var(--line);color:var(--ink)}
+ #msg:empty,#res:empty{display:none}
+ #msg.ok,#res.ok{background:var(--ok-bg);border-color:#bfe6cf;color:#0b6b3d}
+ #msg.err,#res.err{background:var(--bad-bg);border-color:#f3c7c7;color:#a31f1f}
+ .selos{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+ .selos span{font-size:12px;font-weight:600;color:var(--muted);background:var(--soft);border:1px solid var(--line);
+  border-radius:999px;padding:4px 10px}
+"""
+
+ICONE_ESCUDO = """<svg viewBox="0 0 24 24" fill="none" stroke="#E6195A" stroke-width="2" stroke-linecap="round"
+ stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/>
+ <path d="M9 12l2 2 4-4"/></svg>"""
+
+ICONE_BUSCA = """<svg viewBox="0 0 24 24" fill="none" stroke="#E6195A" stroke-width="2" stroke-linecap="round"
+ aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>"""
+
+ICONE_CAMERA = """<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+ stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>"""
 
 PAGINA = """<!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Caminho Livre</title><style>""" + ESTILO + """</style></head><body>
-<h1>Caminho Livre</h1>
-<p class="sub">Nenhum obstáculo deve impedir alguém de chegar ao seu destino.
- <a href="/painel">Painel dos órgãos públicos</a></p>
+<title>Caminho Livre · Registre um obstáculo</title>""" + FAVICON + """<style>""" + ESTILO + """</style></head><body>
+<header class="topo"><div class="wrap">""" + MARCA + """
+ <nav class="nav"><a href="/painel">Painel dos órgãos públicos</a></nav>
+</div></header>
 
-<div class="aviso">
- <b>Aviso de privacidade.</b> Usamos a foto, a rua e o ponto de referência apenas para localizar o
- obstáculo e encaminhá-lo ao poder público. Não pedimos nome, telefone nem e-mail.
- <b>Não fotografe pessoas identificáveis nem placas de veículos e não escreva dados pessoais na
- descrição.</b> Removemos da foto os metadados, como a localização por GPS. Os dados são apagados
- automaticamente após __RETENCAO__ dias, e você pode apagar o seu relato quando quiser com o
- código de acompanhamento.
-</div>
+<section class="hero"><div class="wrap">
+ <span class="eyebrow">Acessibilidade urbana · São Paulo</span>
+ <h1>Nenhum obstáculo deve impedir alguém de <em>chegar ao seu destino.</em></h1>
+ <p class="sub">Viu um buraco, um desnível ou algo bloqueando a calçada? Registre em menos de um minuto.
+  Nosso robô valida, prioriza e encaminha o relato ao poder público automaticamente.</p>
+ <ol class="passos">
+  <li><span>1</span>Tire uma foto do obstáculo</li>
+  <li><span>2</span>Informe a rua e uma referência</li>
+  <li><span>3</span>Acompanhe pelo código</li>
+ </ol>
+</div></section>
 
-<form id="f">
+<main class="wrap">
+<div class="grade">
+<form id="f" class="card">
  <h2>Registrar obstáculo</h2>
+ <p class="desc">Campos com * são obrigatórios.</p>
  <label for="foto">Foto do obstáculo *</label>
- <input id="foto" type="file" accept="image/*" capture="environment" required>
- <img id="prev" alt="pré-visualização">
+ <div class="drop">
+  <div class="dica">
+   <div class="ic">""" + ICONE_CAMERA + """</div>
+   <strong>Toque para tirar ou escolher uma foto</strong><br>
+   <small>JPG, PNG ou WEBP, até 8 MB. Removemos a localização da imagem.</small>
+  </div>
+  <input id="foto" type="file" accept="image/*" capture="environment" required>
+  <img id="prev" alt="pré-visualização">
+ </div>
  <label for="cat">Categoria *</label>
  <select id="cat">
   <option value="buraco">Buraco</option><option value="desnivel">Desnível</option>
@@ -233,25 +356,44 @@ PAGINA = """<!doctype html>
   <option value="poste">Poste</option><option value="lixeira">Lixeira</option>
   <option value="outro">Outro</option>
  </select>
- <label for="rua">Rua onde a foto foi tirada *</label>
- <input id="rua" placeholder="Ex.: Rua Manoel Coelho" maxlength="120" required>
- <label for="ref">Ponto de referência *</label>
- <input id="ref" placeholder="Ex.: Em frente à padaria, perto do ponto de ônibus" maxlength="160" required>
+ <div class="linha">
+  <div><label for="rua">Rua onde a foto foi tirada *</label>
+  <input id="rua" placeholder="Ex.: Rua Manoel Coelho" maxlength="120" required></div>
+  <div><label for="ref">Ponto de referência *</label>
+  <input id="ref" placeholder="Ex.: Em frente à padaria" maxlength="160" required></div>
+ </div>
  <label for="desc">Descrição (opcional, sem dados pessoais)</label>
- <textarea id="desc" rows="2" maxlength="500"></textarea>
- <label><input id="aceite" type="checkbox" required> Li o aviso de privacidade e concordo.</label>
+ <textarea id="desc" rows="2" maxlength="500" placeholder="Conte o que dificulta a passagem"></textarea>
+ <label class="check"><input id="aceite" type="checkbox" required> Li o aviso de privacidade e concordo.</label>
  <button type="submit">Enviar ocorrência</button>
  <div id="msg"></div>
 </form>
 
-<div class="card">
- <h2>Acompanhar meu relato</h2>
+<aside class="card aviso">
+ <h3>""" + ICONE_ESCUDO + """Aviso de privacidade</h3>
+ <p>Usamos a foto, a rua e o ponto de referência apenas para localizar o obstáculo e encaminhá-lo ao
+  poder público. Não pedimos nome, telefone nem e-mail.</p>
+ <p class="destaque"><b>Não fotografe pessoas identificáveis nem placas de veículos e não escreva dados
+  pessoais na descrição.</b></p>
+ <p>Removemos da foto os metadados, como a localização por GPS. Os dados são apagados automaticamente
+  após __RETENCAO__ dias, e você pode apagar o seu relato quando quiser com o código de acompanhamento.</p>
+ <div class="selos"><span>Sem GPS</span><span>Sem dados pessoais</span><span>Apagado em __RETENCAO__ dias</span></div>
+</aside>
+
+<section class="card acomp">
+ <h2>""" + ICONE_BUSCA + """Acompanhar meu relato</h2>
+ <p class="desc">Use o código recebido ao enviar.</p>
  <label for="cod">Código de acompanhamento</label>
- <input id="cod" placeholder="Código recebido ao enviar" maxlength="20">
- <button type="button" class="sec" id="consultar">Consultar andamento</button>
- <button type="button" class="perigo" id="apagar">Apagar meu relato</button>
+ <input id="cod" placeholder="Ex.: A1B2C3D4E5" maxlength="20">
+ <div class="acoes">
+  <button type="button" class="sec" id="consultar">Consultar andamento</button>
+  <button type="button" class="perigo" id="apagar">Apagar meu relato</button>
+ </div>
  <div id="res"></div>
+</section>
 </div>
+</main>
+<footer class="rodape"><b>Caminho Livre</b> · CitizenTech · FIAP Global Solution 2026.2</footer>
 
 <script>
 const $ = id => document.getElementById(id);
@@ -297,57 +439,132 @@ $("apagar").onclick = async () => {
 LOGIN = """<!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Caminho Livre - Acesso restrito</title><style>""" + ESTILO + """</style></head><body>
-<h1>Acesso restrito</h1>
-<p class="sub">O painel é destinado aos órgãos públicos e organizações parceiras.</p>
-<form method="post" action="/login">
+<title>Caminho Livre · Acesso restrito</title>""" + FAVICON + """<style>""" + BASE + """
+ body{min-height:100vh;display:flex;flex-direction:column;
+  background:linear-gradient(135deg,#0e1014 0%,#1a1220 60%,#2a0f1d 100%)}
+ .centro{flex:1;display:grid;place-items:center;padding:32px 20px}
+ .login{width:100%;max-width:420px;padding:32px}
+ .login .marca{color:var(--ink);margin-bottom:24px} .login .marca small{color:var(--muted)}
+ .login h1{font-size:24px;letter-spacing:-.02em;margin:0 0 6px}
+ .login .desc{color:var(--muted);margin:0 0 8px;font-size:14px}
+ .login button{width:100%;margin-top:18px;padding:14px}
+ .login .err{margin-top:12px;font-weight:600;font-size:14px}
+ .login .err:empty{display:none}
+ .login .err:not(:empty){background:var(--bad-bg);border:1px solid #f3c7c7;border-radius:12px;padding:10px 12px}
+ .login .nota{font-size:13px;color:var(--muted);margin:18px 0 0;border-top:1px solid var(--line);padding-top:16px}
+ .voltar{color:#c3c8d1;font-size:14px;text-align:center;padding-bottom:28px} .voltar a{color:#fff}
+</style></head><body>
+<div class="centro">
+<form method="post" action="/login" class="card login">
+ """ + MARCA + """
+ <h1>Acesso restrito</h1>
+ <p class="desc">O painel é destinado aos órgãos públicos e organizações parceiras.</p>
  <label for="chave">Chave de acesso</label>
  <input id="chave" name="chave" type="password" autocomplete="current-password" required>
- <button type="submit">Entrar</button>
+ <button type="submit">Entrar no painel</button>
  <div class="err">__ERRO__</div>
+ <p class="nota">A chave fica no arquivo <code>chave_api.txt</code>, na pasta do servidor.</p>
 </form>
-<p class="sub">A chave fica no arquivo <code>chave_api.txt</code>, na pasta do servidor.</p>
+</div>
+<p class="voltar"><a href="/">← Voltar ao formulário do cidadão</a></p>
 </body></html>"""
 
 PAINEL = """<!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Caminho Livre - Painel</title>
-<style>
- body{font-family:system-ui,sans-serif;max-width:980px;margin:24px auto;padding:0 16px;color:#1b1b1b}
- h1{margin-bottom:0} .sub{color:#555;margin-top:4px}
- .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:16px 0}
- .c{border:1px solid #ccc;border-radius:10px;padding:12px}
- .c b{display:block;font-size:26px} .c span{color:#555;font-size:13px}
- table{width:100%;border-collapse:collapse;font-size:14px;margin-bottom:24px}
- td,th{border-bottom:1px solid #ddd;padding:6px;text-align:left;vertical-align:top}
- td img{width:48px;height:48px;object-fit:cover;border-radius:6px}
- .alta{color:#b00;font-weight:600}.media{color:#b60;font-weight:600}.baixa{color:#060}
- .falha{color:#b00;font-weight:600} small{color:#555} a{color:#06c}
- .barra{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:8px 0}
- button{cursor:pointer;background:#345;color:#fff;border:0;border-radius:8px;padding:8px 14px;font:inherit}
- .bom{color:#060;font-weight:600}.ruim{color:#b00;font-weight:600}
+<title>Caminho Livre · Painel</title>""" + FAVICON + """
+<style>""" + BASE + """
+ .cab{background:linear-gradient(135deg,#0e1014 0%,#1a1220 60%,#2a0f1d 100%);color:#fff;padding:32px 0 92px}
+ .cab .wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+ .cab h1{margin:0;font-size:clamp(24px,3vw,34px);letter-spacing:-.02em}
+ .cab p{margin:6px 0 0;color:#c3c8d1;max-width:620px}
+ .eyebrow{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#ffb3c9}
+ .barra{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+ .pill{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:#e6e9ee;background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:8px 14px}
+ .pill b{color:#fff}
+ .ponto{width:8px;height:8px;border-radius:50%;background:#2fd17a;box-shadow:0 0 0 0 rgba(47,209,122,.6);
+  animation:pulso 2s infinite;flex:none}
+ @keyframes pulso{70%{box-shadow:0 0 0 8px rgba(47,209,122,0)}100%{box-shadow:0 0 0 0 rgba(47,209,122,0)}}
+ .pill .bom{color:#7ee2a8;font-weight:600} .pill .ruim{color:#ff9b9b;font-weight:600}
+ #rodar{padding:10px 18px;box-shadow:0 8px 20px rgba(230,25,90,.3)}
+ #rodarmsg{font-size:13px;color:#c3c8d1}
+ .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px;margin-top:-64px;position:relative}
+ .c{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:18px 18px 16px;
+  position:relative;overflow:hidden}
+ .c:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--cor,#c9ced6)}
+ .c b{display:block;font-size:32px;line-height:1.1;letter-spacing:-.02em} .c span{color:var(--muted);font-size:13px;font-weight:500}
+ .c.total{background:var(--brand);border-color:var(--brand);color:#fff} .c.total span{color:#ffd6e3} .c.total:before{display:none}
+ .k-encaminhada{--cor:#0f8a4f} .k-duplicada{--cor:#6b5bd6} .k-rejeitada{--cor:#8a919c}
+ .k-erro_encaminhamento{--cor:#b45d06} .k-erro_permanente{--cor:#c62828} .k-nova{--cor:#2a7de1}
+ .secao{margin-top:24px;padding:0;overflow:hidden}
+ .secao .tit{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:20px 24px 14px}
+ .secao h2{font-size:18px;margin:0} .secao .tit small{color:var(--muted);font-size:13px}
+ .tabela{overflow-x:auto}
+ table{width:100%;min-width:760px;border-collapse:collapse;font-size:14px}
+ .proto,td.num{white-space:nowrap}
+ th{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;background:var(--soft);
+  text-align:left;padding:10px 16px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);white-space:nowrap}
+ td{padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:middle}
+ tbody tr:last-child td{border-bottom:0} tbody tr:hover td{background:#fcfcfd}
+ td img{width:56px;height:56px;object-fit:cover;border-radius:10px;display:block;border:1px solid var(--line)}
+ .semfoto{display:grid;place-items:center;width:56px;height:56px;border-radius:10px;background:var(--soft);
+  border:1px dashed #d4d8df;color:#9aa1ad;font-size:11px}
+ .proto{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:13px;font-weight:600}
+ small{color:var(--muted)} .local b{font-weight:600}
+ .tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;border-radius:999px;padding:4px 10px;
+  white-space:nowrap;background:var(--soft);color:#3b414c;border:1px solid var(--line)}
+ .tag:before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+ .tag.alta{background:var(--bad-bg);color:var(--bad);border-color:#f3c7c7}
+ .tag.media{background:var(--warn-bg);color:var(--warn);border-color:#f2d6b3}
+ .tag.baixa{background:var(--ok-bg);color:var(--ok);border-color:#bfe6cf}
+ .tag.neutra:before{display:none}
+ .num{font-variant-numeric:tabular-nums}
+ .falha{display:inline-grid;place-items:center;min-width:26px;height:24px;padding:0 8px;border-radius:999px;
+  background:var(--bad-bg);color:var(--bad);font-weight:700}
+ .erro{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12px;color:#a31f1f;background:var(--bad-bg);
+  border-radius:8px;padding:4px 8px;display:inline-block;margin:2px 0}
+ .vazio{text-align:center;color:var(--muted);padding:28px 16px}
 </style></head><body>
-<h1>Painel Caminho Livre</h1>
-<p class="sub">MVP para órgãos públicos e organizações comunitárias. Lê tudo da API v1.
- <a href="/">Formulário do cidadão</a> · <a href="/sair">Sair</a></p>
-<div class="barra">
- <span id="robo">Robô: ...</span><span id="integ">Auditoria: ...</span>
- <button id="rodar">Rodar agora</button><span id="rodarmsg"></span>
-</div>
+<header class="topo"><div class="wrap">""" + MARCA + """
+ <nav class="nav"><a href="/">Formulário do cidadão</a><a href="/sair">Sair</a></nav>
+</div></header>
+
+<section class="cab"><div class="wrap">
+ <div>
+  <span class="eyebrow">Painel dos órgãos públicos</span>
+  <h1>Ocorrências de acessibilidade</h1>
+  <p>MVP para órgãos públicos e organizações comunitárias. Atualiza sozinho a cada 10 segundos, lendo a API v1.</p>
+ </div>
+ <div class="barra">
+  <span class="pill"><span class="ponto"></span><span id="robo">Robô: ...</span></span>
+  <span class="pill"><span id="integ">Auditoria: ...</span></span>
+  <button id="rodar">Rodar agora</button><span id="rodarmsg"></span>
+ </div>
+</div></section>
+
+<main class="wrap">
 <div class="cards" id="cards"></div>
 
-<h2>Alertas</h2>
-<table><thead><tr><th>Data/hora</th><th>Tipo</th><th>Nível</th><th>Mensagem</th></tr></thead>
-<tbody id="alertas"></tbody></table>
+<section class="card secao">
+ <div class="tit"><h2>Pontos críticos</h2><small>Encaminhados, da maior para a menor prioridade</small></div>
+ <div class="tabela"><table><thead><tr><th>Foto</th><th>Protocolo</th><th>Categoria</th><th>Prioridade</th>
+ <th>Local</th><th>Reincid.</th><th>Origem</th></tr></thead><tbody id="criticos"></tbody></table></div>
+</section>
 
-<h2>Pontos críticos (encaminhados, por prioridade)</h2>
-<table><thead><tr><th>Foto</th><th>Protocolo</th><th>Categoria</th><th>Prioridade</th>
-<th>Local</th><th>Reincid.</th><th>Origem</th></tr></thead><tbody id="criticos"></tbody></table>
+<section class="card secao">
+ <div class="tit"><h2>Alertas</h2><small>Os 15 mais recentes</small></div>
+ <div class="tabela"><table><thead><tr><th>Data/hora</th><th>Tipo</th><th>Nível</th><th>Mensagem</th></tr></thead>
+ <tbody id="alertas"></tbody></table></div>
+</section>
 
-<h2>Execuções do robô</h2>
-<table><thead><tr><th>Data/hora</th><th>Processados</th><th>Sucessos</th><th>Falhas</th>
-<th>Duração</th><th>Mensagens de erro</th></tr></thead><tbody id="exec"></tbody></table>
+<section class="card secao">
+ <div class="tit"><h2>Execuções do robô</h2><small>Histórico com sucessos, falhas e erros</small></div>
+ <div class="tabela"><table><thead><tr><th>Data/hora</th><th>Processados</th><th>Sucessos</th><th>Falhas</th>
+ <th>Duração</th><th>Mensagens de erro</th></tr></thead><tbody id="exec"></tbody></table></div>
+</section>
+</main>
+<footer class="rodape"><b>Caminho Livre</b> · CitizenTech · FIAP Global Solution 2026.2</footer>
 
 <script>
 const $ = id => document.getElementById(id);
@@ -355,6 +572,13 @@ const esc = s => String(s ?? "").replace(/[&<>"']/g,
   c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const rot = {encaminhada:"Encaminhadas", duplicada:"Duplicadas", rejeitada:"Rejeitadas",
              erro_encaminhamento:"Erro de envio", erro_permanente:"Em quarentena", nova:"Novas"};
+// rótulos só para exibição (o dado continua o mesmo)
+const nomeCat = {buraco:"Buraco", desnivel:"Desnível", obra:"Obra", veiculo:"Veículo", poste:"Poste",
+                 lixeira:"Lixeira", outro:"Outro"};
+const nomeTipo = {prioridade_alta:"Prioridade alta", falha_importacao:"Falha de importação",
+                  ocorrencia_em_quarentena:"Ocorrência em quarentena", falha_robo:"Falha do robô"};
+const nomeNivel = {alta:"Alta", media:"Média", baixa:"Baixa"};
+const cap = s => { s = String(s ?? ""); return s === "cidadao" ? "Cidadão" : s.charAt(0).toUpperCase() + s.slice(1); };
 const fetchJ = async u => { const r = await fetch(u); if (r.status === 401) { location.href = "/painel"; throw 0; } return r.json(); };
 async function carregar() {
   const [res, enc, ex, al, ig] = await Promise.all([
@@ -362,27 +586,30 @@ async function carregar() {
     fetchJ("/api/v1/execucoes?limite=15"), fetchJ("/api/v1/alertas?limite=500"),
     fetchJ("/api/v1/integridade")]);
   const hb = res.ultimo_ciclo;
-  $("robo").innerHTML = hb ? "Robô ativo. Último ciclo: <b>" + esc(new Date(hb.ts).toLocaleString("pt-BR")) +
+  $("robo").innerHTML = hb ? "Robô ativo · último ciclo <b>" + esc(new Date(hb.ts).toLocaleString("pt-BR")) +
     "</b> (" + esc(hb.resultado) + ")" : "<span class='ruim'>Robô ainda não rodou</span>";
-  $("integ").innerHTML = ig.consistente ? "<span class='bom'>Auditoria íntegra e saídas conferidas</span>" :
+  $("integ").innerHTML = ig.consistente ? "<span class='bom'>✓ Auditoria íntegra e saídas conferidas</span>" :
     "<span class='ruim'>Atenção: divergência na verificação de integridade</span>";
-  $("cards").innerHTML = "<div class='c'><b>" + res.total + "</b><span>Total de ocorrências</span></div>" +
-    Object.keys(rot).map(k => "<div class='c'><b>" + (res.por_status[k] || 0) + "</b><span>" + rot[k] + "</span></div>").join("");
-  $("alertas").innerHTML = al.itens.slice(-15).reverse().map(a => "<tr><td>" +
-    esc(new Date(a.ts).toLocaleString("pt-BR")) + "</td><td>" + esc(a.tipo) + "</td><td class='" +
-    (a.nivel === "alta" ? "alta" : "media") + "'>" + esc(a.nivel) + "</td><td>" + esc(a.mensagem) +
-    "</td></tr>").join("") || "<tr><td colspan='4'>Nenhum alerta.</td></tr>";
+  $("cards").innerHTML = "<div class='c total'><b>" + res.total + "</b><span>Total de ocorrências</span></div>" +
+    Object.keys(rot).map(k => "<div class='c k-" + k + "'><b>" + (res.por_status[k] || 0) + "</b><span>" + rot[k] + "</span></div>").join("");
+  $("alertas").innerHTML = al.itens.slice(-15).reverse().map(a => "<tr><td class='num'>" +
+    esc(new Date(a.ts).toLocaleString("pt-BR")) + "</td><td><b>" + esc(nomeTipo[a.tipo] || a.tipo) + "</b></td><td><span class='tag " +
+    (a.nivel === "alta" ? "alta" : "media") + "'>" + esc(nomeNivel[a.nivel] || a.nivel) + "</span></td><td>" + esc(a.mensagem) +
+    "</td></tr>").join("") || "<tr><td colspan='4' class='vazio'>Nenhum alerta.</td></tr>";
   const itens = enc.itens.sort((a, b) => (b.prioridade.pontos || 0) - (a.prioridade.pontos || 0) || a.id - b.id);
-  $("criticos").innerHTML = itens.map(o => "<tr><td>" + (o.foto.url ? "<img src='" + esc(o.foto.url) + "'>" : "-") +
-    "</td><td>" + esc(o.protocolo) + "</td><td>" + esc(o.categoria) + "</td><td class='" + esc(o.prioridade.nivel) + "'>" +
-    esc(o.prioridade.nivel) + " (" + esc(o.prioridade.pontos) + ")</td><td>" + esc(o.local.rua) + "<br><small>" +
-    esc(o.local.referencia) + "</small></td><td>" + esc(o.reincidencias) + "</td><td>" + esc(o.origem) + "</td></tr>").join("") ||
-    "<tr><td colspan='7'>Nenhuma ocorrência encaminhada ainda.</td></tr>";
-  $("exec").innerHTML = ex.itens.map(e => "<tr><td>" + esc(new Date(e.inicio).toLocaleString("pt-BR")) + "</td><td>" +
-    e.processados + "</td><td>" + e.sucessos + "</td><td class='" + (e.falhas ? "falha" : "") + "'>" + e.falhas +
-    "</td><td>" + e.duracao_s + " s</td><td>" +
-    (e.erros.length ? e.erros.map(x => esc(x.etapa + ": " + x.mensagem)).join("<br>") : "-") + "</td></tr>").join("") ||
-    "<tr><td colspan='6'>Nenhuma execução com itens ainda.</td></tr>";
+  $("criticos").innerHTML = itens.map(o => "<tr><td>" + (o.foto.url ? "<img src='" + esc(o.foto.url) + "' alt='foto do obstáculo'>" :
+    "<span class='semfoto'>sem foto</span>") +
+    "</td><td class='proto'>" + esc(o.protocolo) + "</td><td>" + esc(nomeCat[o.categoria] || o.categoria) +
+    "</td><td><span class='tag " + esc(o.prioridade.nivel) + "'>" +
+    esc(nomeNivel[o.prioridade.nivel] || o.prioridade.nivel) + " · " + esc(o.prioridade.pontos) + " pts</span></td><td class='local'><b>" +
+    esc(o.local.rua) + "</b><br><small>" + esc(o.local.referencia) + "</small></td><td class='num'>" + esc(o.reincidencias) +
+    "</td><td><span class='tag neutra'>" + esc(cap(o.origem)) + "</span></td></tr>").join("") ||
+    "<tr><td colspan='7' class='vazio'>Nenhuma ocorrência encaminhada ainda.</td></tr>";
+  $("exec").innerHTML = ex.itens.map(e => "<tr><td class='num'>" + esc(new Date(e.inicio).toLocaleString("pt-BR")) + "</td><td class='num'>" +
+    e.processados + "</td><td class='num'>" + e.sucessos + "</td><td class='num'>" + (e.falhas ? "<span class='falha'>" + e.falhas + "</span>" : e.falhas) +
+    "</td><td class='num'>" + e.duracao_s + " s</td><td>" +
+    (e.erros.length ? e.erros.map(x => "<span class='erro'>" + esc(x.etapa + ": " + x.mensagem) + "</span>").join("<br>") : "<small>—</small>") + "</td></tr>").join("") ||
+    "<tr><td colspan='6' class='vazio'>Nenhuma execução com itens ainda.</td></tr>";
 }
 $("rodar").onclick = async () => {
   $("rodarmsg").textContent = "Executando...";
