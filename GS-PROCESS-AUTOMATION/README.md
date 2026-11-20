@@ -141,8 +141,3 @@ de logs em [`logs/`](logs/).
 - O banco é SQLite, adequado ao MVP; para produção, trocar por um banco compartilhado.
 - Dados e relatos nos exemplos e nos testes são **fictícios**.
 
-## Links
-
-- Repositório: https://github.com/USUARIO_PREENCHER/caminho-livre
-- Vídeo de demonstração: LINK_DO_VIDEO_PREENCHER
-- Apresentação: LINK_DA_APRESENTACAO_PREENCHER
