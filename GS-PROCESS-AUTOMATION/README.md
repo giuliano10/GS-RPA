@@ -13,6 +13,21 @@ transforma relatos soltos em dados organizados e prontos para o MVP.
 
 **FIAP · Engenharia de Software · Global Solution 2026.2 · Robotic Process Automation**
 
+## Ficha Técnica do MVP
+
+| Campo | Resposta |
+|---|---|
+| **Nome do produto** | Caminho Livre: tecnologia para uma cidade acessível |
+| **Cidadão e território** | Pessoas com deficiência, idosos e pessoas com mobilidade reduzida, na cidade de São Paulo |
+| **Problema, em uma frase** | Calçadas com buracos, desníveis, obstáculos e obras dificultam a circulação de quem tem mobilidade reduzida, e os relatos chegam dispersos, sem um processo ágil para conferir, priorizar e encaminhar |
+| **Proposta de valor** | O cidadão registra o obstáculo com foto, rua e ponto de referência. A plataforma identifica a barreira, prioriza e encaminha as ocorrências aos órgãos públicos, alimenta um painel de dados e um assistente responde dúvidas sobre as normas citando o artigo |
+| **Arquitetura: componentes** | Coleta e dados: Airflow + Databricks (Bronze, Prata, Ouro). RPA: robô Python a cada 1 min + servidor com formulário, painel e API REST + SQLite. Triagem visual: Python, OpenCV, Tkinter. Assistente de normas: FastAPI, busca híbrida e LLM com LoRA |
+| **Fontes de dados** | SP156 (Portal de Dados Abertos da Prefeitura de SP), Open-Meteo, relatos do app e CSVs da prefeitura e de ONGs (fictícios nos testes), 7 normas federais e municipais, imagens anotadas no Roboflow |
+| **Modelos de IA utilizados** | RF-DETR (Roboflow), YOLOv8n, Qwen2.5-1.5B-Instruct + LoRA, multilingual-e5-small |
+| **URL do MVP e repositório** | MVP executável localmente (formulário em localhost:8000, painel em /painel). Repositórios: [Generative AI](https://github.com/giuliano10/GS-GENERATIVE-AI) · [Applied Vision](https://github.com/giuliano10/GS-AMPPLIED-VISION) · RPA: [https://github.com/giuliano10/GS-RPA] · Big Data: [https://github.com/giuliano10/GS-BIG-DATA] |
+| **Indicadores de impacto** | Assistente: 75% de acurácia, 13,3% de alucinação e 86,7% de recusa correta (60 perguntas de teste). RPA: 30 testes unitários e 48 verificações ponta a ponta. Dados pessoais apagados após 90 dias |
+| **ODS conectados** | ODS 11 (cidades e comunidades sustentáveis) e ODS 10 (redução das desigualdades) |
+
 ## Integrantes
 
 | Nome | RM | 
